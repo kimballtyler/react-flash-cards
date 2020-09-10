@@ -34,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Nav setView={this.setView} />
+        <Nav view={this.state.view} setView={this.setView} />
         {this.getView()}
       </div>
     );
