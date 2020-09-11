@@ -3,3 +3,25 @@
   background-color: #0275d8;
   border-radius: 5%;
 }
+
+h1 {
+  margin-top: 10px;
+}
+
+textarea {
+  width: 600px;
+  height: 65px;
+  margin-bottom: 12px;
+}
+
+.label {
+  margin-right: 540px;
+}
+
+.create-button {
+  margin-right: 10px;
+}
+
+.create-buttons {
+  margin-left: 435px;
+}
