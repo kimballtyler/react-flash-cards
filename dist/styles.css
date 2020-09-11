@@ -4,17 +4,17 @@
   border-radius: 5%;
 }
 
-h1 {
+.create-heading {
   margin-top: 10px;
 }
 
-textarea {
+.create-ta {
   width: 600px;
   height: 65px;
   margin-bottom: 12px;
 }
 
-.label {
+.create-label {
   margin-right: 540px;
 }
 
@@ -24,4 +24,8 @@ textarea {
 
 .create-buttons {
   margin-left: 435px;
+}
+
+.card-col {
+  margin-bottom: 95px;
 }
