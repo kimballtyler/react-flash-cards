@@ -21,15 +21,10 @@ class CreateCard extends React.Component {
   }
 
   handleChange(event) {
-    if (event.target.name === 'question') {
-      this.setState({
-        question: event.target.value
-      });
-    } else {
-      this.setState({
-        answer: event.target.value
-      });
-    }
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(event) {
@@ -39,30 +34,26 @@ class CreateCard extends React.Component {
       answer: this.state.answer
     };
     this.props.addCard(newCard);
-    this.setState({
-      question: '',
-      answer: ''
-    });
     this.handleReset();
   }
 
   render() {
     return (
       <div>
-        <h1 className="text-center">Create New Card</h1>
+        <h1 className="create-heading text-center">Create New Card</h1>
         <form onSubmit={this.handleSubmit} className="text-center">
-          <div className="label">
+          <div className="label create-label">
             <label>Question:</label>
           </div>
           <div>
-            <textarea name="question" value={this.state.question} onChange={this.handleChange}></textarea>
+            <textarea className="create-ta" name="question" value={this.state.question} onChange={this.handleChange}></textarea>
           </div>
 
-          <div className="label">
+          <div className="label create-label">
             <label>Answer:</label>
           </div>
           <div>
-            <textarea name="answer" value={this.state.answer} onChange={this.handleChange}></textarea>
+            <textarea className="create-ta" name="answer" value={this.state.answer} onChange={this.handleChange}></textarea>
           </div>
           <div className="create-buttons">
             <button type="submit" onClick={this.handleReset} className="create-button btn btn-outline-danger">Cancel</button>
@@ -70,7 +61,6 @@ class CreateCard extends React.Component {
           </div>
         </form>
       </div>
-
     );
   }
 }

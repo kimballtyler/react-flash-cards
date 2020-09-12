@@ -4,17 +4,17 @@
   border-radius: 5%;
 }
 
-h1 {
+.create-heading {
   margin-top: 10px;
 }
 
-textarea {
+.create-ta {
   width: 600px;
   height: 65px;
   margin-bottom: 12px;
 }
 
-.label {
+.create-label {
   margin-right: 540px;
 }
 
@@ -24,4 +24,45 @@ textarea {
 
 .create-buttons {
   margin-left: 435px;
+}
+
+.card-col {
+  margin-bottom: 95px;
+}
+
+.review-card {
+  height: 440px;
+  cursor: pointer;
+}
+
+.review-text {
+  font-size: 3rem;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  hyphens: manual;
+}
+
+.review-right {
+  position: absolute;
+  cursor: pointer;
+  top: 310px;
+  right: 190px;
+  opacity: .5;
+}
+
+.review-left {
+  position: absolute;
+  cursor: pointer;
+  top: 310px;
+  left: 190px;
+  opacity: .5;
+}
+
+.review-right:hover {
+  opacity: 1;
+}
+
+.review-left:hover {
+  opacity: 1;
 }
