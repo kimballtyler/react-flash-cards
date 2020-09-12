@@ -17,7 +17,6 @@ function Card(props) {
 }
 
 function ViewCards(props) {
-  console.log('passed cards', props.cards);
   return (
     <div>
       <h1 className="text-center">My Cards</h1>

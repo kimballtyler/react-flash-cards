@@ -15,7 +15,6 @@ class App extends React.Component {
     this.getView = this.getView.bind(this);
     this.saveCards = this.saveCards.bind(this);
     this.addCard = this.addCard.bind(this);
-    this.viewCards = this.viewCards.bind(this);
   }
 
   componentDidMount() {
@@ -42,37 +41,24 @@ class App extends React.Component {
   }
 
   getView() {
-    console.log(this.state.view)
+    const cards = this.state.cards.slice();
     switch (this.state.view) {
       case 'create-card':
         return <CreateCard setView={this.setView} addCard={this.addCard} />;
       case 'review-cards':
         return <ReviewCards />;
+      case 'view-cards':
+        return <ViewCards cards={cards} />;
       default:
         return null;
-    }
-  }
-
-  viewCards() {
-    let cards = JSON.parse(localStorage.getItem('flash-cards'));
-    console.log("the mother frickin cards", cards)
-    if (cards === null) {
-      cards = [];
-    }
-    return <ViewCards cards={cards} />;
+      }
   }
 
   render() {
-    let view = null;
-    if (this.state.view === 'view-cards') {
-      view = this.viewCards();
-    } else {
-      view = this.getView();
-    }
     return (
       <div>
         <Nav view={this.state.view} setView={this.setView} />
-        { view }
+        { this.getView() }
       </div>
     );
   }
