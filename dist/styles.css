@@ -27,7 +27,7 @@
 }
 
 .card-col {
-  margin-bottom: 95px;
+  margin-bottom: 180px;
 }
 
 .review-card {
@@ -65,4 +65,42 @@
 
 .review-left:hover {
   opacity: 1;
+}
+
+.trash {
+  cursor: pointer;
+}
+
+.trash:hover {
+  opacity: .5;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modal-content {
+  margin: auto;
+  height: 200px;
+  width: 600px;
+  border-radius: 10px;
+}
+
+.modal-buttons {
+  margin-right: 20px;
+}
+
+.modal-cancel {
+  margin-right: 10px;
+}
+
+.modal-title {
+  padding: 10px 0;
 }
