@@ -10,13 +10,16 @@ class App extends React.Component {
     this.state = {
       view: 'view-cards',
       cards: [],
-      activeCard: 0
+      activeCard: 0,
+      modalOpen: false
     };
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);
     this.saveCards = this.saveCards.bind(this);
     this.addCard = this.addCard.bind(this);
     this.setActiveCard = this.setActiveCard.bind(this);
+    this.modalToggle = this.modalToggle.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +28,22 @@ class App extends React.Component {
       cards = [];
     }
     this.setState({ cards: cards });
+  }
+
+  deleteCard(index) {
+    const newCards = this.state.cards.slice();
+    newCards.splice(index, 1);
+    this.setState({
+      cards: newCards,
+      activeCard: 0,
+      modalOpen: false
+    },
+    () => this.saveCards());
+  }
+
+  modalToggle(index) {
+    this.setState({ modalOpen: !this.state.modalOpen });
+    this.setState({ activeCard: index });
   }
 
   setActiveCard(index) {
@@ -53,7 +72,7 @@ class App extends React.Component {
       case 'review-cards':
         return <ReviewCards cards={this.state.cards} setActiveCard={this.setActiveCard} activeCard={this.state.activeCard} />;
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} />;
+        return <ViewCards deleteCard={this.deleteCard} activeCard={this.state.activeCard} modalToggle={this.modalToggle} modalOpen={this.state.modalOpen} cards={this.state.cards} />;
       default:
         return null;
     }
