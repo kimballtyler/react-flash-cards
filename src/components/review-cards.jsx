@@ -54,6 +54,9 @@ class ReviewCards extends React.Component {
     } else {
       sideColor = 'bg-secondary';
     }
+    if (cards.length === 0) {
+      return <h1 className="text-center">Review</h1>;
+    }
     return (
       <div className="">
         <h1 className="text-center">Review</h1>
