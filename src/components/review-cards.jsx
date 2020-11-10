@@ -1,4 +1,5 @@
 import React from 'react';
+import ProgressBar from './progress-bar';
 
 class ReviewCards extends React.Component {
   constructor(props) {
@@ -57,9 +58,13 @@ class ReviewCards extends React.Component {
     if (cards.length === 0) {
       return <h1 className="text-center">Review</h1>;
     }
+    const complete = activeCard / cards.length * 100;
     return (
       <div className="">
         <h1 className="text-center">Review</h1>
+        <div className="d-flex justify-content-center">
+          <ProgressBar complete={complete} />
+        </div>
         <div className="d-flex align-items-center justify-content-center mt-4">
           <div onClick={this.flipCard} className={`${sideColor} col-9 review-card text-white d-flex align-items-center justify-content-center font-weight-bold`}>
             <p className="review-text text-center">{cards[activeCard][side]}</p>
