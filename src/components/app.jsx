@@ -3,6 +3,7 @@ import ViewCards from './view-cards';
 import ReviewCards from './review-cards';
 import CreateCard from './create-card';
 import Nav from './nav';
+import UpdateCard from './update-card';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class App extends React.Component {
     this.setActiveCard = this.setActiveCard.bind(this);
     this.modalToggle = this.modalToggle.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
+    this.updateCard = this.updateCard.bind(this);
   }
 
   componentDidMount() {
@@ -56,6 +58,12 @@ class App extends React.Component {
     this.setState({ cards: newCards }, () => this.saveCards());
   }
 
+  updateCard(newCard) {
+    const newCards = this.state.cards.slice();
+    newCards[this.state.activeCard] = newCard;
+    this.setState({ cards: newCards }, () => this.saveCards());
+  }
+
   saveCards() {
     const cards = this.state.cards.slice();
     localStorage.setItem('flash-cards', JSON.stringify(cards));
@@ -72,7 +80,9 @@ class App extends React.Component {
       case 'review-cards':
         return <ReviewCards cards={this.state.cards} setActiveCard={this.setActiveCard} activeCard={this.state.activeCard} />;
       case 'view-cards':
-        return <ViewCards deleteCard={this.deleteCard} activeCard={this.state.activeCard} modalToggle={this.modalToggle} modalOpen={this.state.modalOpen} cards={this.state.cards} />;
+        return <ViewCards setActiveCard={this.setActiveCard} setView={this.setView} deleteCard={this.deleteCard} activeCard={this.state.activeCard} modalToggle={this.modalToggle} modalOpen={this.state.modalOpen} cards={this.state.cards} />;
+      case 'update-card':
+        return <UpdateCard updateCard={this.updateCard} setView={this.setView} card={this.state.cards[this.state.activeCard]} />;
       default:
         return null;
     }

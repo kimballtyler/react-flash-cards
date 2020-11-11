@@ -68,11 +68,17 @@
   opacity: 1;
 }
 
-.trash {
+.trash, .edit {
   cursor: pointer;
 }
 
-.trash:hover {
+.edit {
+  position: relative;
+  top:15px;
+  right: 25px;
+}
+
+.trash:hover, .edit:hover {
   opacity: .5;
 }
 
