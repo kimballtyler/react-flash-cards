@@ -14,11 +14,13 @@ function Card(props) {
         <h5 className="card-title text-dark">Answer:</h5>
         <p className="card-text">{card.answer}</p>
       </div>
-      <div className="card-footer h-25 card bg-dark w-100 text-center trash-footer"><i onClick={() => props.modalToggle(props.index)} className="fas fa-trash-alt trash text-secondary"></i></div>
+      <div className="card h-25 bg-dark w-100 text-center">
+        <i onClick={() => { props.setView('update-card'); props.setActiveCard(props.index); }} className="fas fa-edit text-secondary edit"></i>
+        <i onClick={() => props.modalToggle(props.index)} className="fas fa-trash-alt trash text-secondary"></i>
+      </div>
     </div>
   );
 }
-
 function ViewCards(props) {
   let modal = null;
   if (props.modalOpen) {
@@ -33,7 +35,7 @@ function ViewCards(props) {
           {
             props.cards.map((card, index) => {
               return (
-                <Card modalToggle={props.modalToggle} index={index} key={card.question} card={card} />
+                <Card setActiveCard={props.setActiveCard} setView={props.setView} modalToggle={props.modalToggle} index={index} key={card.question} card={card} />
               );
             })
           }
